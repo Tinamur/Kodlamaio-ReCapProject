@@ -17,15 +17,32 @@ namespace Business.Concrete
         }
         public void Add(Car car)
         {
-            //Buraya Kontrollerini Yazacaksın 
-            //Mesela 1990 dan Eski arabalar Eklenemez gibi
-            //Ancak Kontrol Olmadan Ekleyeceğim Şimdilik
-            _carDal.Add(car);
+            //Normalde Buraya ValidationManager
+            //Bağlayıp onu kullanmak daha iyi olur
+            //Ancak Henüz Kampta O Derslerde veya Ödevlerde
+            //Değiliz
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Araba Kayıdı başarısız");
+            }
+
         }
 
         public void Delete(Car car)
         {
             _carDal.Delete(car);
+        }
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
+        }
+        public Car GetById(int id)
+        {
+            return _carDal.Get(c => c.CarId == id);
         }
 
         public List<Car> GetAll()
@@ -33,14 +50,16 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public Car GetById(int id)
+        public List<Car> GetAllByBrandId(int id)
         {
-            return _carDal.GetById(id);
+            return _carDal.GetAll(c => c.BrandId == id);
         }
 
-        public void Update(Car car)
+        public List<Car> GetAllByColorId(int id)
         {
-            _carDal.Update(car);
+            return _carDal.GetAll(c => c.ColorId == id);
         }
+
+
     }
 }
