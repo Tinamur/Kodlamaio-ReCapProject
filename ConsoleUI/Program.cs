@@ -17,7 +17,7 @@ namespace ConsoleUI
             //Color CRUD DENENDİ İŞE YARIYOR
             // CarDTO işe yarıyor 
             ICarService carManager = new CarManager(new EfCarDal());
-            foreach (var item in carManager.GetCarDetails())
+            foreach (var item in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine
                     (item.CarName + " - " +
