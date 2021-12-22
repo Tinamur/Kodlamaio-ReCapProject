@@ -16,15 +16,13 @@ namespace ConsoleUI
             //Brand CRUD DENENDİ İŞE YARIYOR
             //Color CRUD DENENDİ İŞE YARIYOR
             // CarDTO işe yarıyor 
-            ICarService carManager = new CarManager(new EfCarDal());
-            foreach (var item in carManager.GetCarDetails().Data)
+            IRentalService rentalService = new RentalManager(new EfRentalDal());
+            rentalService.Add(new Rental
             {
-                Console.WriteLine
-                    (item.CarName + " - " +
-                    item.BrandName + " - " +
-                    item.ColorName + " - " +
-                    item.DailyPrice);
-            }
+                CarId = 4,
+                CustomerId = 1,
+                RentDate = DateTime.Now,
+            });
 
 
         }
