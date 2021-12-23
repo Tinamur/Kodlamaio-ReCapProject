@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Entities;
 using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using System;
 using System.Collections.Generic;
@@ -17,31 +19,34 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        //Aşağıdaki Operasyonlar Şimdilik Boş Olarak kalacak
-        //Derslerde henüz foreign keylere geçmedik
         public IResult Add(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Add(user);
+            return new SuccessResult(Messages.TaskSuccess);
         }
 
         public IResult Delete(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Delete(user);
+            return new SuccessResult(Messages.TaskSuccess);
         }
 
         public IDataResult<List<User>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<User>>
+                (_userDal.GetAll(), Messages.TaskSuccess);
         }
 
         public IDataResult<User> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<User>
+                (_userDal.Get(u => u.UserId == id), Messages.TaskSuccess);
         }
 
         public IResult Update(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Update(user);
+            return new SuccessResult(Messages.TaskSuccess);
         }
     }
 }

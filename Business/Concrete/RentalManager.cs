@@ -29,7 +29,6 @@ namespace Business.Concrete
                 {
                     if (!item.ReturnDate.HasValue)
                     {
-                        Console.WriteLine(Messages.TaskFail);
                         return new ErrorResult(Messages.TaskFail);
                     }
                 }
@@ -40,7 +39,8 @@ namespace Business.Concrete
 
         public IResult Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Messages.TaskSuccess);
         }
 
         public IDataResult<List<Rental>> GetAll()
@@ -57,12 +57,14 @@ namespace Business.Concrete
 
         public IDataResult<Rental> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Rental>
+                (_rentalDal.Get(r => r.RentalId == id), Messages.TaskSuccess);
         }
 
         public IResult Update(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Update(rental);
+            return new SuccessResult(Messages.TaskSuccess);
         }
     }
 }
