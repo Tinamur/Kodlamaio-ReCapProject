@@ -21,14 +21,8 @@ namespace Business.Concrete
         }
         public IResult Add(Car car)
         {
-            //Normalde Buraya ValidationManager
-            //Bağlayıp onu kullanmak daha iyi olur
-            //Ancak Henüz Kampta O Derslerde veya Ödevlerde
-            //Değiliz
-            if (car.CarName.Length < 2 && car.DailyPrice! > 0)
-            {
-                return new ErrorResult(Messages.TaskFail);
-            }
+            //FluentValidation validation işlemini yapar
+            //Validation işlemi dışında kalan business sorguları burada yapılır
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
 

@@ -23,6 +23,12 @@ namespace Business.Concrete
         {
             //Validations Derslerine daha geçmediğimiz için
             //Spagetti kontrol yazıyorum
+            //Validations Derslerine geçtik ve sanırım bu kod bir iş kodu
+            //O yüzden burada bırakacağım
+            //daha güzel yazan arkadaş bulursam güncelleyeceğim
+            //--
+            //Kendime not aracın tüm kayıtlarını getirmek saçmalık
+            //bi ara burayı sadece en son kayıdı getirecek sekile güncelle
             if (this.GetAllByCarId(rental.CarId).Data.Count != 0)
             {
                 foreach (var item in this.GetAllByCarId(rental.CarId).Data)
