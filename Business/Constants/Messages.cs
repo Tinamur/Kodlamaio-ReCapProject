@@ -15,5 +15,7 @@ namespace Business.Constants
         public static string CarListed = "Araba Listelendi";
         public static string CarsListed = "Arabalar Listelendi";
         public static string CarDetailsListed = "Araba Detayları Listelendi";
+
+        public static string CarImageLimitExceeded = "Arabaya ait maximum resim sayısına ulaşıldı: ";
     }
 }
